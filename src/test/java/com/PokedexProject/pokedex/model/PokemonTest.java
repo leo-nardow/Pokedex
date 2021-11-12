@@ -29,7 +29,7 @@ public class PokemonTest {
 	
 	@BeforeEach
 	public void start() {
-		pokemon = new Pokemon(0L, "Bulbasaur", "Grama", 12, 15);
+		pokemon = new Pokemon(0L, "Bulbasaur", "Grass", 12, 15, 1, 2, 0, "There is a plant seed on its back right from the day this Pokémon is born.");
 	}
 	
 	@Test
