@@ -17,10 +17,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
-public class PokemonTest {
-
-	public Pokemon pokemon;
-	public Pokemon pokemonNulo = new Pokemon();
+public class UserTest {
+	
+	public User user;
+	public User userNull = new User();
 	
 	@Autowired
 	private ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
@@ -29,25 +29,26 @@ public class PokemonTest {
 	
 	@BeforeEach
 	public void start() {
-		pokemon = new Pokemon(0L, "Bulbasaur", "Grass", 12, 15, 1, 2, 0, "There is a plant seed on its back right from the day this Pokémon is born.");
+		user = new User(0L, "Leo", "leo@email.com", "123456");
 	}
 	
 	@Test
-	void testValidaAtributos() {
-		Set<ConstraintViolation<Pokemon>> violacao = validator.validate(pokemon);
+	void testValidateAttributes() {
+		Set<ConstraintViolation<User>> violation = validator.validate(user);
 		
-		System.out.println(violacao.toString());
+		System.out.println(violation.toString());
 		
-		assertTrue(violacao.isEmpty());
+		assertTrue(violation.isEmpty());
 	}
 	
 	@Test
-	void testNaoValidaAtributos() {
-		Set<ConstraintViolation<Pokemon>> violacao = validator.validate(pokemonNulo);
+	void testNotValidadeAttributes() {
+		Set<ConstraintViolation<User>> violation = validator.validate(userNull);
 		
-		System.out.println(violacao.toString());
+		System.out.println(violation.toString());
 		
-		assertFalse(violacao.isEmpty());
+		assertFalse(violation.isEmpty());
 	}
 	
+
 }
